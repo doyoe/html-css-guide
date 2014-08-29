@@ -46,8 +46,8 @@
 
 ### 4.编码
 
-* 以 UTF-8 无 BOM 编码作为页面格式；
-* 在HTML中文档中用 <meta charset="utf-8"> 来指定编码；
+* 以 UTF-8 无 BOM 编码作为文件格式；
+* 在HTML中文档中用 `<meta charset="utf-8" />` 来指定编码；
 * 不需要为CSS显示定义编码，因为它默认为utf-8；
 
 ### 5.小写
