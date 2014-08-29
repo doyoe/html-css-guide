@@ -310,6 +310,9 @@
 	
 > 虽然使用p标签，也可以通过CSS去定义它的外观和标题相同，但p标签本身的并不是表示标题，而是表示文本段落
 
+> HTML5 Elements: [参考1](http://www.w3.org/TR/html5/) [参考2](http://dev.w3.org/html5/markup/elements.html)
+
+
 
 <a name="css"></a>
 ## CSS约定
