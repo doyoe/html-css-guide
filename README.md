@@ -138,12 +138,12 @@
 
 不推荐：
 
-	<link type="text/css" rel="stylesheet" href="base.css">
+	<link type="text/css" rel="stylesheet" href="base.css" />
 	<script type="text/javascript" src="base.js"></script>
 
 推荐：
 
-	<link rel="stylesheet" href="base.css">
+	<link rel="stylesheet" href="base.css" />
 	<script src="base.js"></script>
 
 > 因为HTML5在引入CSS时，默认type值为text/css；在引入JavaScript时，默认type值为text/javascript
@@ -178,7 +178,11 @@
 
 ### 5.嵌套
 
-所有元素必须正确嵌套，不允许交叉，不允许inline元素包含block元素，不允许类似在ul下出现除了li外的其它子元素等等
+所有元素必须正确嵌套
+
+* 不允许交叉
+* 不允许inline元素包含block元素
+* 不允许类似在ul下出现除了li外的其它子元素等等
 
 不推荐：
 
@@ -206,7 +210,7 @@
 		</ul>
 	</div>
 
-> 规则可参考：[http://www.cs.tut.fi/~jkorpela/html/strict.html]。由于某些现实原因，在HTML5中对a元素做了一些变更，a元素除了可以包含inline元素外，也将可以包含block元素了。
+> 规则可参考：[嵌套规则](http://www.cs.tut.fi/~jkorpela/html/strict.html)。由于某些现实原因，在HTML5中对a元素做了一些变更，a元素除了可以包含inline元素外，也将可以包含block元素了。
 
 ### 6.标签闭合
 
