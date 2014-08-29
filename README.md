@@ -66,7 +66,7 @@
 
 	<!-- TODO: 图文混排 -->
 	<div class="g-imgtext">
-	<img src=”1.png” alt="" />
+	<img src="1.png" alt="" />
 	...
 
 	/* TODO: 图文混排 comm: g-imgtext */
@@ -117,6 +117,20 @@
 
 <a name="html"></a>
 ## HTML约定
+
+### 1.文档类型
+
+* 统一使用HTML5的标准文档类型：`<!DOCTYPE html>`
+
+> HTML5文档类型具备前后兼容的特质，并且易记易书写
+
+* 在文档doctype申明之前，不允许加上任何非空字符
+
+> 任何出现在doctype申明之前的字符都将使得你的HTML文档进入非标准模式
+
+* 不允许添加<meta>属性强制改变文档模式
+
+> 避免出现不可控的问题
 
 <a name="css"></a>
 ## CSS约定
