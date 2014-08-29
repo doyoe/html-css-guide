@@ -64,15 +64,13 @@
 
 用 TODO 标示待办事项和正在开发的条目
 
-```
-&lt;!-- TODO: 图文混排 --&gt;
-&lt;div class="g-imgtext"&gt;
-&lt;img src=”1.png” alt="" /&gt;
-...
+	<!-- TODO: 图文混排 -->
+	<div class="g-imgtext">
+	<img src=”1.png” alt="" />
+	...
 
-/* TODO: 图文混排 comm: g-imgtext */
-.g-imgtext{...}
-```
+	/* TODO: 图文混排 comm: g-imgtext */
+	.g-imgtext{...}
 
 ### 8.行尾空格
 
@@ -80,8 +78,8 @@
 
 ### 9.代码有效性
 
-* 使用 [http://validator.w3.org/] 来验证你的HTML代码有效性；
-* 使用 [http://jigsaw.w3.org/css-validator/] 来验证你的CSS代码有效性；
+* 使用 [W3C HTML Validator](ttp://validator.w3.org/) 来验证你的HTML代码有效性；
+* 使用 [W3C CSS Validator](http://jigsaw.w3.org/css-validator/) 来验证你的CSS代码有效性；
 
 > 代码验证不是最终目的，真的目的在于让开发者在经过多次的这种验证过程后，能够深刻理解到怎样的语法或写法是非标准和不推荐的，即使在某些场景下被迫要使用非标准写法，也可以做到心中有数。
 
