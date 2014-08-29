@@ -76,7 +76,39 @@
 
 删除行尾空格，这些空格没有必要存在
 
-### 9.代码有效性
+### 9.省略嵌入式资源协议头
+
+省略图像、媒体文件、样式表和脚本等URL协议头部声明 ( http: , https: )。如果不是这两个声明的URL则不省略。
+
+省略协议声明，使URL成相对地址，防止内容混淆问题和导致小文件重复下载（这个主要是指http和https交杂的场景中）。
+
+不推荐：
+
+	<script src="http://www.google.com/js/gweb/analytics/autotrack.js"></script>
+
+推荐：
+
+	<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
+	
+不推荐：
+
+```
+.example {
+  background: url(http://www.google.com/images/example);
+}
+```
+
+推荐：
+
+```
+.example {
+  background: url(//www.google.com/images/example);
+}
+```
+
+> 注：省略协议头在IE7-8下会有一点小问题，外部CSS文件（link和@import）会被下载两遍，所以该条目的约定看具体项目。
+
+### 10.代码有效性
 
 * 使用 [W3C HTML Validator](http://validator.w3.org/) 来验证你的HTML代码有效性；
 * 使用 [W3C CSS Validator](http://jigsaw.w3.org/css-validator/) 来验证你的CSS代码有效性；
