@@ -132,6 +132,147 @@
 
 > 避免出现不可控的问题
 
+### 2.省略type属性
+
+在调用CSS和JavaScript时，可以将type属性省略不写
+
+不推荐：
+
+	<link type="text/css" rel="stylesheet" href="base.css">
+	<script type="text/javascript" src="base.js"></script>
+
+推荐：
+
+	<link rel="stylesheet" href="base.css">
+	<script src="base.js"></script>
+
+> 因为HTML5在引入CSS时，默认type值为text/css；在引入JavaScript时，默认type值为text/javascript
+
+### 3.用双引号包裹属性值
+
+所有的标签属性值必须要用双引号包裹，同时也不允许有的用双引号，有的用单引号的情况
+
+不推荐：
+
+	<a href=http://www.qunar.com class=home>去哪儿网</a>
+
+推荐：
+
+	<a href="http://www.qunar.com" class="home">去哪儿网</a>
+
+### 4.属性值省略
+
+非必须属性值可以省略
+
+不推荐：
+
+	<input type="text" readonly="readonly" />
+	<input type="text" disabled="disabled" />
+
+推荐：
+
+	<input type="text" readonly />
+	<input type="text" disabled />
+
+> 这里的 readonly 和 disabled 属性的值是非必须的，可以省略不写，我们知道HTML5表单元素新增了很多类似的属性，如: required
+
+### 5.嵌套
+
+所有元素必须正确嵌套，不允许交叉，不允许inline元素包含block元素，不允许类似在ul下出现除了li外的其它子元素等等
+
+不推荐：
+
+	<span>
+		<h1>这是一个块级h1元素</h1>
+		<p>这是一个块级p元素</p>
+	</span>
+	<ul>
+		<h3>xx列表</h3>
+		<li>asdasdsdasd</li>
+		<li>asdasdsdasd</li>
+	</ul>
+
+推荐：
+
+	<div>
+		<h1>这是一个块级h1元素</h1>
+		<p>这是一个块级p元素</p>
+	</div>
+	<div>
+		<h3>xx列表</h3>
+		<ul>
+			<li>asdasdsdasd</li>
+			<li>asdasdsdasd</li>
+		</ul>
+	</div>
+
+> 规则可参考：[http://www.cs.tut.fi/~jkorpela/html/strict.html]。由于某些现实原因，在HTML5中对a元素做了一些变更，a元素除了可以包含inline元素外，也将可以包含block元素了。
+
+### 6.标签闭合
+
+所有标签必须闭合
+
+不推荐：
+
+	<div>balabala...
+	<link rel="stylesheet" href="*.css">
+
+推荐：
+
+	<div>balabala...</div>
+	<link rel="stylesheet" href="*.css" />
+
+> 虽然有些标记没有要求必须关闭，但是为了避免出错的几率，要求必须全部关闭，省去判断某标记是否需要关闭的时间
+
+### 7.使用img的alt属性
+
+为img元素加上alt属性
+
+不推荐：
+
+	<img src="banner.jpg" />
+
+推荐：
+
+	<img src="banner.jpg" alt="520即将到来，爱就大声说出来" />
+
+> alt属性的内容为对该图片的简要描述，这对于盲人用户和图像损毁都非常有意义，即无障碍
+对于纯粹的装饰性图片，alt属性值可以留空，如 alt=""
+
+### 8.使用label的for属性
+
+为表单元素label加上for属性
+
+
+不推荐：
+
+	<label><input type="radio" name="color" value="0" />蓝色</label>
+	<label><input type="radio" name="color" value="1" />粉色</label>
+
+推荐：
+
+	<label for="blue"><input type="radio" id="blue" name="color" value="0" />蓝色</label>
+	<label for="pink"><input type="radio" id="pink" name="color" value="1" />粉色</label>
+
+> for属性能让点击label标签的时候，同时focus到对应的 input 和 textarea上，增加响应区域
+
+h3. 5.9 按模块添加注释
+
+在每个模块开始和结束的地方添加注释
+
+	<!-- 新闻列表模块 -->
+	<div class="m-news g-mod"
+	...
+	<!-- /新闻列表模块 -->
+
+	<!-- 排行榜模块 -->
+	<div class="m-topic g-mod"
+	...
+	<!-- /排行榜模块 -->
+
+> 注释内容左右两边保留和注释符号有1个空格位
+在注释内容内不允许再出现中划线“-”，某些浏览器会报错
+
 <a name="css"></a>
 ## CSS约定
 
