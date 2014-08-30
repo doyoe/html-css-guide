@@ -148,19 +148,7 @@
 
 > 因为HTML5在引入CSS时，默认type值为text/css；在引入JavaScript时，默认type值为text/javascript
 
-### 3.用双引号包裹属性值
-
-所有的标签属性值必须要用双引号包裹，同时也不允许有的用双引号，有的用单引号的情况
-
-不推荐：
-
-	<a href=http://www.qunar.com class=home>去哪儿网</a>
-
-推荐：
-
-	<a href="http://www.qunar.com" class="home">去哪儿网</a>
-
-### 4.属性值省略
+### 3.省略属性值
 
 非必须属性值可以省略
 
@@ -175,6 +163,19 @@
 	<input type="text" disabled />
 
 > 这里的 readonly 和 disabled 属性的值是非必须的，可以省略不写，我们知道HTML5表单元素新增了很多类似的属性，如: required
+
+
+### 4.用双引号包裹属性值
+
+所有的标签属性值必须要用双引号包裹，同时也不允许有的用双引号，有的用单引号的情况
+
+不推荐：
+
+	<a href=http://www.qunar.com class=home>去哪儿网</a>
+
+推荐：
+
+	<a href="http://www.qunar.com" class="home">去哪儿网</a>
 
 ### 5.嵌套
 
