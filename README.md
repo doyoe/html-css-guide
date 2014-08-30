@@ -45,7 +45,7 @@
 规范名称 | Cook
 --------|------|
 当前版本 | v0.0.1
-规范制定 | 杜瑶 and you?
+规范制定 | [杜瑶(@doyoe)](http://weibo.com/doyoe) and you?
 最后更新 | 2014.08.29
 
 <a name="general"></a>
