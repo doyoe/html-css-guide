@@ -19,6 +19,14 @@
 	* [文档类型](#doctype)
 	* [省略type属性](#type)
 	* [省略属性值](#attribute)
+	* [用双引号包裹属性值](#quots)
+	* [嵌套](#nest)
+	* [标签闭合](#close-tag)
+	* [多媒体替代方案](#perceivable)
+	* [有效操作](#friendly)
+	* [按模块添加注释](#html-comment)
+	* [格式](#format)
+	* [语义化标签](#semantic)
 5. [CSS约定](#css)
 
 <a name="intro"></a>
@@ -190,7 +198,7 @@
 
 > 这里的 readonly 和 disabled 属性的值是非必须的，可以省略不写，我们知道HTML5表单元素新增了很多类似的属性，如: required
 
-
+<a name="quots"></a>
 ### 4.用双引号包裹属性值
 
 所有的标签属性值必须要用双引号包裹，同时也不允许有的用双引号，有的用单引号的情况
@@ -203,6 +211,7 @@
 
 	<a href="http://www.qunar.com" class="home">去哪儿网</a>
 
+<a name="nest"></a>
 ### 5.嵌套
 
 所有元素必须正确嵌套
@@ -239,6 +248,7 @@
 
 > 规则可参考：[嵌套规则](http://www.cs.tut.fi/~jkorpela/html/strict.html)。由于某些现实原因，在HTML5中对a元素做了一些变更，a元素除了可以包含inline元素外，也将可以包含block元素了。
 
+<a name="close-tag"></a>
 ### 6.标签闭合
 
 所有标签必须闭合
@@ -255,6 +265,7 @@
 
 > 虽然有些标记没有要求必须关闭，但是为了避免出错的几率，要求必须全部关闭，省去判断某标记是否需要关闭的时间
 
+<a name="perceivable"></a>
 ### 7.多媒体替代方案
 
 * 为img元素加上alt属性
@@ -271,6 +282,7 @@
 
 > alt属性的内容为对该图片的简要描述，这对于盲人用户和图像损毁都非常有意义，即无障碍。对于纯粹的装饰性图片，alt属性值可以留空，如 alt=""
 
+<a name="friendly"></a>
 ### 8.有效操作
 
 为表单元素label加上for属性
@@ -287,6 +299,7 @@
 
 > for属性能让点击label标签的时候，同时focus到对应的 input 和 textarea上，增加响应区域
 
+<a name="html-comment"></a>
 ### 9.按模块添加注释
 
 在每个模块开始和结束的地方添加注释
@@ -305,6 +318,7 @@
 > 
 > 注释风格保持与原生HTML的语法相似：成对出现 `<!-- comment --><!-- /comment -->`
 
+<a name="format"></a>
 ### 10.格式
 
 * 将每个块元素、列表元素或表格元素都放在新行
@@ -322,6 +336,7 @@
 		<p>dff<em>asd</em>asda<span>sds</span>dasdasd</p>
 	</div>
 
+<a name="semantic"></a>
 ### 11.语义化标签
 
 * 根据HTML元素的本身用途去使用它们
