@@ -5,6 +5,8 @@
 1. [规范概述](#intro)
 2. [基本信息](#profile)
 3. [通用约定](#general)
+	* [文档目录结构](#directory)
+	* [分离](#separate)
 4. [HTML约定](#html)
 5. [CSS约定](#css)
 
@@ -30,10 +32,12 @@
 <a name="general"></a>
 ## 通用约定
 
+<a name="directory"></a>
 ### 1.文档目录结构
 
 待添加。。。
 
+<a name="separate"></a>
 ### 2.分离
 
 结构（HTML）、表现（CSS）、行为分离（JavaScript）
@@ -148,7 +152,7 @@
 
 > 因为HTML5在引入CSS时，默认type值为text/css；在引入JavaScript时，默认type值为text/javascript
 
-### 3.省略属性值
+### 3.属性值
 
 非必须属性值可以省略
 
