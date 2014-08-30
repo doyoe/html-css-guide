@@ -7,6 +7,15 @@
 3. [通用约定](#general)
 	* [文档目录结构](#directory)
 	* [分离](#separate)
+	* [缩进](#indentation)
+	* [编码](#encoding)
+	* [小写](#lowercase)
+	* [分离](#separate)
+	* [注释](#comment)
+	* [待办事项](#todo)
+	* [行尾空格](#end-line-space)
+	* [省略嵌入式资源协议头](#protocol-relative-url)
+	* [代码有效性](#validator)
 4. [HTML约定](#html)
 5. [CSS约定](#css)
 
@@ -44,26 +53,31 @@
 
 > 将结构与表现、行为分离，保证它们之间的最小耦合，这对前期开发和后期维护都至关重要。
 
+<a name="indentation"></a>
 ### 3.缩进
 
 使用tab（4个空格宽度）来进行缩进，可以在IDE里进行设置
 
+<a name="encoding"></a>
 ### 4.编码
 
 * 以 UTF-8 无 BOM 编码作为文件格式；
 * 在HTML中文档中用 `<meta charset="utf-8" />` 来指定编码；
 * 不需要为CSS显示定义编码，因为它默认为utf-8；
 
+<a name="lowercase"></a>
 ### 5.小写
 
 * 所有的HTML标签必须小写
 * 所有的HTML属性必须小写
 * 所有的样式名及规则必须小写
 
+<a name="comment"></a>
 ### 6.注释
 
 尽可能的为你的代码写上注释。解释为什么要这样写，它是新鲜的方案还是解决了什么问题。
 
+<a name="todo"></a>
 ### 7.待办事项
 
 用 TODO 标示待办事项和正在开发的条目
@@ -76,10 +90,12 @@
 	/* TODO: 图文混排 comm: g-imgtext */
 	.g-imgtext{...}
 
+<a name="end-line-space"></a>
 ### 8.行尾空格
 
 删除行尾空格，这些空格没有必要存在
 
+<a name="protocol-relative-url"></a>
 ### 9.省略嵌入式资源协议头
 
 省略图像、媒体文件、样式表和脚本等URL协议头部声明 ( http: , https: )。如果不是这两个声明的URL则不省略。
@@ -112,6 +128,7 @@
 
 > 注：省略协议头在IE7-8下会有一点小问题，外部CSS文件（link和@import）会被下载两遍，所以该条目的约定看具体项目。
 
+<a name="validator"></a>
 ### 10.代码有效性
 
 * 使用 [W3C HTML Validator](http://validator.w3.org/) 来验证你的HTML代码有效性；
@@ -122,6 +139,7 @@
 <a name="html"></a>
 ## HTML约定
 
+<a name="doctype"></a>
 ### 1.文档类型
 
 * 统一使用HTML5的标准文档类型：`<!DOCTYPE html>`
