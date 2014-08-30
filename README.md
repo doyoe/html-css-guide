@@ -10,13 +10,15 @@
 	* [缩进](#indentation)
 	* [编码](#encoding)
 	* [小写](#lowercase)
-	* [分离](#separate)
 	* [注释](#comment)
 	* [待办事项](#todo)
 	* [行尾空格](#end-line-space)
 	* [省略嵌入式资源协议头](#protocol-relative-url)
 	* [代码有效性](#validator)
 4. [HTML约定](#html)
+	* [文档类型](#doctype)
+	* [省略type属性](#type)
+	* [省略属性值](#attribute)
 5. [CSS约定](#css)
 
 <a name="intro"></a>
@@ -154,6 +156,7 @@
 
 > 避免出现不可控的问题
 
+<a name="type"></a>
 ### 2.省略type属性
 
 在调用CSS和JavaScript时，可以将type属性省略不写
@@ -170,7 +173,8 @@
 
 > 因为HTML5在引入CSS时，默认type值为text/css；在引入JavaScript时，默认type值为text/javascript
 
-### 3.属性值
+<a name="attribute"></a>
+### 3.省略属性值
 
 非必须属性值可以省略
 
