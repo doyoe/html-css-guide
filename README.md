@@ -28,6 +28,25 @@
 	* [格式](#format)
 	* [语义化标签](#semantic)
 5. [CSS约定](#css)
+	* [文件引用](#link)
+	* [命名-组成元素](#element)
+	* [命名-词汇规范](#word)
+	* [命名-缩写规范](#abbr)
+	* [命名-前缀规范](#prefix)
+	* [复用与重写](#reuse)
+	* [id与class](#id)
+	* [视觉封装](#packaging)
+	* [规则与分号](#semicolon)
+	* [0与单位](#unit)
+	* [0与小数](#decimal)
+	* [去掉uri中引用资源的引号](#non-quotes)
+	* [HEX颜色值写法](#hex)
+	* [属性书写顺序](#order)
+	* [注释规范](#css-comment)
+	* [hack规范](#hack)
+	* [避免类型选择器](#type-selector)
+	* [属性缩写与分拆](#override)
+6. [结语](#end)
 
 <a name="intro"></a>
 ## 规范概述
@@ -360,6 +379,419 @@
 <a name="css"></a>
 ## CSS约定
 
+<a name="link"></a>
+### 1.文件引用
 
+* 一律使用link的方式调用外部样式
+
+> 一般情况下，在页面中只允许使用 `<link />` 标签来引用CSS文件，
+
+<a name="element"></a>
+### 2.命名-组成元素
+
+* 命名必须由单词、中划线①或数字组成；
+* 不推荐使用拼音来作为样式名，尤其是缩写的拼音、拼音与英文的混合
+
+不推荐：
+
+	.xiangqing{}
+	.news_list{}
+	.zhuti{}
+
+推荐：
+
+	.detail{}
+	.news-list{}
+	.topic{}
+
+> ①我们使用中划线 “-” 作为连接字符，而不是下划线 "_"。
+> 
+> 我们知道2种方式都有不少支持者，但 "-" 能让你少按一次shift键，并且更符合CSS原生语法，所以我们只选一种目前业内普遍使用的方式
+
+<a name="word"></a>
+### 3.命名-词汇规范
+
+* 不依据表现形式来命名
+* 可根据内容来命名
+* 可根据功能来命名
+
+不推荐：
+
+	left, right, center, red, black
+
+推荐：
+
+	nav, news, type, search
+
+<a name="abbr"></a>
+### 4.命名-缩写规范
+
+* 保证缩写后还能较为清晰保持原单词所能表述的意思；
+* 使用业界熟知的或者约定俗成的；
+
+不推荐：
+
+	navigation   =>  navi	
+	header       =>  head
+	description  =>  des
+
+推荐：
+
+	navigation   =>  nav	
+	header       =>  hd
+	description  =>  desc
+
+<a name="prefix"></a>
+### 5.命名-前缀规范
+
+前缀|说明|示例
+---|---|---|
+g-|全局通用样式命名，前缀g全称为global，一旦修改将影响全站样式|g-mod
+m-|模块命名方式|m-detail
+ui-|组件命名方式|ui-selector
+J-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全部定义权限|J-switch
+
+* 选择器必须是以某个前缀开头
+
+不推荐：
+
+	.info{}
+	.current{}
+	.news{}
+	
+> 因为这样将给我们带来不可预知的管理麻烦以及沉重的历史包袱。你永远也不会知道哪些样式名已经被用掉了，如果你是一个新人，你可能会遭遇，你每定义个样式名，都有同名的样式已存在，然后你只能是换样式名或者覆盖规则。
+
+推荐：
+
+	.m-detail .info{}
+	.m-detail .current{}
+	.m-detail .news{}
+	
+> 所有的选择器必须是以 g-, m-, ui- 等有前缀的选择符开头的，意思就是说所有的规则都必须在某个相对的作用域下才生效，尽可能减少全局污染。
+
+J- 这种级别的className完全交由JSer自定义，但是命名的规则也可以保持跟重构一致，比如说不能使用拼音之类的
+
+<a name="reuse"></a>
+### 6.复用与重写
+
+参见模块化设计
+
+<a name="id"></a>
+### 7.id与class
+
+* id只可能出现在document layout级别上，意思就是说页面工程师几乎没有写id的场景，除了layout搭建者外
+
+<a name="packaging"></a>
+### 8.视觉封装
+
+* 原生CSS代码书写不分行
+* 不要以缩进的方式来体现层级关系
+
+不推荐：
+
+	.g-box{ sRules; }
+		.g-box-hd .xx{ sRules; }
+			.g-box-hd .xx .aa{ sRules; }
+
+推荐：
+
+	.g-box{ sRules; }
+	.g-box-hd .xx{ sRules; }
+	.g-box-hd .xx .aa{ sRules; }
+
+> 这些都是为了达到简易视觉封装和一致性，让肉眼可以迅速以开头选择器作为检索的流从而主观识别区块
+
+<a name="semicolon"></a>
+### 9.规则与分号
+
+* 每条规则结束后都必须加上分号
+
+不推荐：
+
+	body{margin:0;padding:0;font-size:14px}
+
+推荐：
+
+	body{margin:0;padding:0;font-size:14px;}
+
+<a name="unit"></a>
+### 10.0与单位
+
+* 如果属性值为0，则不需要为0加单位
+
+不推荐：
+
+	body{margin:0px;padding:0px;}
+
+推荐：
+
+	body{margin:0;padding:0;}
+
+<a name="decimal"></a>
+### 11.0与小数
+
+* 如果是0开始的小数，前面的0可以省略不写
+
+不推荐：
+
+	body{opacity:0.6;text-shadow:1px 1px 5px rgba(0,0,0,0.5);}
+
+推荐：
+
+	body{opacity:.6;text-shadow:1px 1px 5px rgba(0,0,0,.5);}
+
+<a name="non-quotes"></a>
+### 12.去掉uri中引用资源的引号
+
+* 不要在url()里对引用资源加引号
+
+不推荐：
+
+	body{background-image:url("sprites.png");}
+	@import url("global.css");
+
+推荐：
+
+	body{background-image:url(sprites.png);}
+	@import url(global.css);
+
+<a name="hex"></a>
+### 13.HEX颜色值写法
+
+* 将所有的颜色值小写
+* 可以缩写的缩写至3位
+
+不推荐：
+
+body{background-color:#FF0000;}
+
+推荐：
+
+body{background-color:#f00;}
+
+<a name="order"></a>
+### 14.属性书写顺序
+
+* 遵循先布局后内容的顺序。
+
+```
+.g-box{
+　　　display:block;
+　　　float:left;
+　　　width:500px;
+　　　height:200px;
+　　　margin:10px;
+　　　padding:10px;
+　　　border:10px;
+　　　background:#aaa;
+　　　color:#000;
+　　　font:14px/1.5 sans-serif;
+}
+```
+
+> 这个应该好理解，比如优先布局，我们知道布局属性有 display, float, overflow 等等；内容次之，比如 color, font, text-align 之类。
+
+* 组概念。
+
+拿上例的代码来说，如果我们还需要进行定位及堆叠，规则我们可以改成如下： 
+
+```
+.g-box{
+　　　display:block;
+　　　position:relative;
+　　　z-index:2;
+　　　top:10px;
+　　　left:100px;
+　　　float:left;
+　　　width:500px;
+　　　height:200px;
+　　　margin:10px;
+　　　padding:10px;
+　　　border:10px;
+　　　background:#aaa;
+　　　color:#000;
+　　　font:14px/1.5 sans-serif;
+}
+```
+
+> 从代码中可以看到，我们直接将z-index, top, left 紧跟在 position 之后，因为这几个属性其实是一组的，如果去掉position，则后3条属性规则都将失效。
+
+* 私有属性在前标准属性在后
+
+```
+.g-box{
+　　　-webkit-box-shadow:1px 1px 5px rgba(0,0,0,.5);
+　　　   -moz-box-shadow:1px 1px 5px rgba(0,0,0,.5);
+　　　     -o-box-shadow:1px 1px 5px rgba(0,0,0,.5);
+　　　        box-shadow:1px 1px 5px rgba(0,0,0,.5);
+}
+```
+
+> 当有一天你的浏览器升级后，可能不再支持私有写法，那么这时写在后面的标准写法将生效，避免无法向后兼容的情况发生。
+
+<a name="css-comment"></a>
+### 15.注释规范
+
+* 保持注释内容与星号之间有一个空格的距离
+
+**普通注释（单行）**
+
+	/* 普通注释 */
+
+**区块注释**
+
+	/**
+	 * 模块: m-detail
+	 * author: joy.du
+	 * edit: 2013.12.19
+	 */
+
+> 有特殊作用的规则一定要有注释说明
+> 应用了高级技巧的地方一定要注释说明
+
+<a name="hack"></a>
+### 16.hack规范
+
+* 尽可能的减少对Hack的使用和依赖，如果在项目中对Hack的使用太多太复杂，对项目的维护将是一个巨大的挑战；
+* 使用其它的解决方案代替Hack思路；
+* 如果非Hack不可，选择稳定且常用并易于理解的；
+
+```
+.test{
+　　　color:#000;       /* For all */
+　　　color:#111\9;     /* For all IE */
+　　　color:#222\0;     /* For IE8 and later, Opera without Webkit */
+　　　color:#333\9\0;   /* For IE8 and later */
+　　　color:#444\0/;    /* For IE8 and later */
+　　　[;color:#555;];   /* For Webkit, IE7 and earlier */
+　　　*color:#666;      /* For IE7 and earlier */
+　　　_color:#777;      /* For IE6 and earlier */
+}
+```
+
+* 严谨且长期的项目，针对IE可以使用条件注释作为预留Hack或者在当前使用
+
+IE条件注释语法：
+<!--[if <keywords>? IE <version>?]>
+<link rel=”stylesheet” href=”*.css” />
+<![endif]-->
+
+语法说明：
+
+```
+<keywords>
+if条件共包含6种选择方式：是否、大于、大于或等于、小于、小于或等于、非指定版本
+是否：指定是否IE或IE某个版本。关键字：空
+大于：选择大于指定版本的IE版本。关键字：gt（greater than）
+大于或等于：选择大于或等于指定版本的IE版本。关键字：gte（greater than or equal）
+小于：选择小于指定版本的IE版本。关键字：lt（less than）
+小于或等于：选择小于或等于指定版本的IE版本。关键字：lte（less than or equal）
+非指定版本：选择除指定版本外的所有IE版本。关键字：!
+```
+
+```
+<version>
+
+目前的常用IE版本为6.0及以上，推荐酌情忽略低版本，把精力花在为使用高级浏览器的用户提供更好的体验上，另从IE10开始已无此特性
+```
+
+<a name="type-selector"></a>
+### 17.避免类型选择器
+
+* 避免出现标签名与ID或class组合的选择器
+* 太多这种写法会让你的CSS效率变得糟糕
+
+不推荐：
+
+	div#doc{ sRules; }
+	li.first{ sRules; }
+
+推荐：
+
+	#doc{ sRules; }
+	.first{ sRules; }
+
+<a name="override"></a>
+### 18.属性缩写与分拆
+
+* 无继承关系时，使用缩写
+* 存在继承关系时，使用分拆方式
+* 根据规则条数选择缩写和拆分
+
+**无继承关系时，使用缩写**
+
+不推荐：
+
+```
+body{
+　　　margin-top:10px;
+　　　margin-right:10px;
+　　　margin-bottom:10px;
+　　　margin-left:10px;
+}
+```
+
+推荐：
+
+```
+body{
+　　　margin:10px;
+}
+```
+
+**存在继承关系时，使用分拆方式**
+
+不推荐：
+
+```
+.m-detail{
+　　　font:blod 12px/1.5 arial,sans-serif;
+}
+.m-detail .info{
+　　　font:normal 14px/1.5 arial,sans-serif;
+}
+```
+
+推荐：
+
+```
+.m-detail{
+　　　font:blod 12px/1.5 arial,sans-serif;
+}
+.m-detail .info{
+　　　font-weight:normal;
+　　　font-size:14px;
+}
+```
+
+> 在存在继承关系的情况下，只将需要变更的属性重定义，不进行缩写，避免不需要的重写的属性被覆盖定义
+
+**根据规则条数选择缩写和拆分**
+
+不推荐：
+
+```
+.m-detail{
+　　　border-width:1px;
+　　　border-style:solid;
+　　　border-color:#000 #000 #f00;
+}
+```
+
+推荐：
+
+```
+.m-detail{
+　　　border:1px solid #000;
+　　　border-bottom-color:#f00;
+}
+```
+
+<a name="end"></a>
+## 结语
+
+坚持一致性的原则。
+一个团队的代码风格如果统一了，首先可以培养良好的协同和编码习惯，其次可以减少无谓的思考，再次可以提升代码质量和可维护性。
+统一的代码风格，团队内部阅读或编辑代码，将会变得非常轻松，因为组员都用一致思维环境。
 
 待修改完善。。。
