@@ -1,3 +1,7 @@
+## 移动组出品
+
+
+
 # HTML/CSS开发规范指南
 
 ## 目录
@@ -46,7 +50,12 @@
 	* [hack规范](#hack)
 	* [避免类型选择器](#type-selector)
 	* [属性缩写与分拆](#override)
-6. [结语](#end)
+6. [图像约定](#img)
+	* [图像压缩](#img-compress)
+	* [背景图](#background-image)
+	* [前景图](#image)
+	* [Sprite](#sprite)
+7. [结语](#end)
 
 <a name="intro"></a>
 ## 规范概述
@@ -64,7 +73,8 @@
 规范名称 | Cook
 --------|------|
 当前版本 | v0.0.1
-规范制定 | [杜瑶(@doyoe)](http://weibo.com/doyoe)
+规范发起 | [杜瑶(@doyoe)](http://weibo.com/doyoe)
+参与人群 | 酒店、机票、无线、目的地、度假、各SI
 最后更新 | 2014.10.11
 
 <a name="general"></a>
@@ -73,7 +83,37 @@
 <a name="directory"></a>
 ### 1.文档目录结构
 
-待添加。。。
+```
+|-- 项目名
+	|-- src	
+		|-- scripts      脚本目录
+		|-- styles（Yo）  样式目录
+			|-- lib   基础库
+				|-- core      核心代码：reset 
+				|-- element   元素
+				|-- fragment  公用碎片
+				|-- layout    布局
+				|-- widget    组件
+			|-- usage  项目具体实现
+				|-- core      核心代码：桥接lib中的core，可以进行项目级扩展
+				|-- fragment  项目公用碎片
+				|-- module    模块
+				|-- page      page桥接文件：src-list
+				|-- export    page pack之后的文件
+		|-- html    静态页面模板目录
+		|-- bgimg   背景图目录（假设有的话）
+		|-- image   前景图目录（假设有的话）
+		|-- font    字体目录（假设有的话）
+```
+
+> `src`, `scripts`, `styles` 三个目录是为了和现有项目保持一致，避免修改过大，所以保持不变；
+
+> `html` 目录，用于存放前端开发做的静态页面，以备查阅、备份、review或给后端套页面；
+
+> `bgimg`, `image`, `font` 三个目录在Qunar一般不会直接存在，因为我们有source服务器，这些资源都会在那上面管理；不过特殊情况也会有，比如一些独立的项目，没有使用source的，那么就需要遵循这样的目录划分；
+
+> 至于 `html`, `bgimg`, `image`, `font` 这几个目录为什么没有加 `s`，主要是因为不希望大家去想某个目录是否为复数，简单点就好；
+
 
 <a name="separate"></a>
 ### 2.分离
@@ -117,7 +157,7 @@
 	...
 
 	/* TODO: 图文混排 comm: g-imgtext */
-	.g-imgtext{...}
+	.g-imgtext{ sRules }
 
 <a name="end-line-space"></a>
 ### 8.行尾空格
@@ -508,11 +548,19 @@ J- 这种级别的className完全交由JSer自定义，但是命名的规则也�
 
 不推荐：
 
-	body{margin:0;padding:0;font-size:14px}
+	body{
+		margin: 0;
+		padding: 0;
+		font-size: 14px
+	}
 
 推荐：
 
-	body{margin:0;padding:0;font-size:14px;}
+	body{
+		margin: 0;
+		padding: 0;
+		font-size: 14px;
+	}
 
 <a name="unit"></a>
 ### 10.0与单位
@@ -521,11 +569,17 @@ J- 这种级别的className完全交由JSer自定义，但是命名的规则也�
 
 不推荐：
 
-	body{margin:0px;padding:0px;}
+	body{
+		margin: 0px;
+		padding: 0px;
+	}
 
 推荐：
 
-	body{margin:0;padding:0;}
+	body{
+		margin: 0;
+		padding: 0;
+	}
 
 <a name="decimal"></a>
 ### 11.0与小数
@@ -534,11 +588,17 @@ J- 这种级别的className完全交由JSer自定义，但是命名的规则也�
 
 不推荐：
 
-	body{opacity:0.6;text-shadow:1px 1px 5px rgba(0,0,0,0.5);}
+	body{
+		opacity: 0.6;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	}
 
 推荐：
 
-	body{opacity:.6;text-shadow:1px 1px 5px rgba(0,0,0,.5);}
+	body{
+		opacity: .6;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+	}
 
 <a name="non-quotes"></a>
 ### 12.去掉uri中引用资源的引号
@@ -547,12 +607,12 @@ J- 这种级别的className完全交由JSer自定义，但是命名的规则也�
 
 不推荐：
 
-	body{background-image:url("sprites.png");}
+	body{ background-image: url("sprites.png"); }
 	@import url("global.css");
 
 推荐：
 
-	body{background-image:url(sprites.png);}
+	body{ background-image: url(sprites.png); }
 	@import url(global.css);
 
 <a name="hex"></a>
@@ -563,11 +623,11 @@ J- 这种级别的className完全交由JSer自定义，但是命名的规则也�
 
 不推荐：
 
-body{background-color:#FF0000;}
+	body{ background-color: #FF0000; }
 
 推荐：
 
-body{background-color:#f00;}
+	body{ background-color: #f00; }
 
 <a name="order"></a>
 ### 14.属性书写顺序
@@ -576,16 +636,16 @@ body{background-color:#f00;}
 
 ```
 .g-box{
-　　　display:block;
-　　　float:left;
-　　　width:500px;
-　　　height:200px;
-　　　margin:10px;
-　　　padding:10px;
-　　　border:10px;
-　　　background:#aaa;
-　　　color:#000;
-　　　font:14px/1.5 sans-serif;
+　　　display: block;
+　　　float: left;
+　　　width: 500px;
+　　　height: 200px;
+　　　margin: 10px;
+　　　padding: 10px;
+　　　border: 10px solid;
+　　　background: #aaa;
+　　　color: #000;
+　　　font: 14px/1.5 sans-serif;
 }
 ```
 
@@ -597,20 +657,20 @@ body{background-color:#f00;}
 
 ```
 .g-box{
-　　　display:block;
-　　　position:relative;
-　　　z-index:2;
-　　　top:10px;
-　　　left:100px;
-　　　float:left;
-　　　width:500px;
-　　　height:200px;
-　　　margin:10px;
-　　　padding:10px;
-　　　border:10px;
-　　　background:#aaa;
-　　　color:#000;
-　　　font:14px/1.5 sans-serif;
+　　　display: block;
+　　　position: relative;
+　　　z-index: 2;
+　　　top: 10px;
+　　　left: 100px;
+　　　float: left;
+　　　width: 500px;
+　　　height: 200px;
+　　　margin: 10px;
+　　　padding: 10px;
+　　　border: 10px solid;
+　　　background: #aaa;
+　　　color: #000;
+　　　font: 14px/1.5 sans-serif;
 }
 ```
 
@@ -620,10 +680,10 @@ body{background-color:#f00;}
 
 ```
 .g-box{
-　　　-webkit-box-shadow:1px 1px 5px rgba(0,0,0,.5);
-　　　   -moz-box-shadow:1px 1px 5px rgba(0,0,0,.5);
-　　　     -o-box-shadow:1px 1px 5px rgba(0,0,0,.5);
-　　　        box-shadow:1px 1px 5px rgba(0,0,0,.5);
+　　　-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+　　　   -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+　　　     -o-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+　　　        box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
 }
 ```
 
@@ -658,14 +718,14 @@ body{background-color:#f00;}
 
 ```
 .test{
-　　　color:#000;       /* For all */
-　　　color:#111\9;     /* For all IE */
-　　　color:#222\0;     /* For IE8 and later, Opera without Webkit */
-　　　color:#333\9\0;   /* For IE8 and later */
-　　　color:#444\0/;    /* For IE8 and later */
-　　　[;color:#555;];   /* For Webkit, IE7 and earlier */
-　　　*color:#666;      /* For IE7 and earlier */
-　　　_color:#777;      /* For IE6 and earlier */
+　　　color: #000;       /* For all */
+　　　color: #111\9;     /* For all IE */
+　　　color: #222\0;     /* For IE8 and later, Opera without Webkit */
+　　　color: #333\9\0;   /* For IE8 and later */
+　　　color: #444\0/;    /* For IE8 and later */
+　　　[;color: #555;];   /* For Webkit, IE7 and earlier */
+　　　*color: #666;      /* For IE7 and earlier */
+　　　_color: #777;      /* For IE6 and earlier */
 }
 ```
 
@@ -724,10 +784,10 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 
 ```
 body{
-　　　margin-top:10px;
-　　　margin-right:10px;
-　　　margin-bottom:10px;
-　　　margin-left:10px;
+　　　margin-top: 10px;
+　　　margin-right: 10px;
+　　　margin-bottom: 10px;
+　　　margin-left: 10px;
 }
 ```
 
@@ -735,7 +795,7 @@ body{
 
 ```
 body{
-　　　margin:10px;
+　　　margin: 10px;
 }
 ```
 
@@ -745,10 +805,10 @@ body{
 
 ```
 .m-detail{
-　　　font:blod 12px/1.5 arial,sans-serif;
+　　　font: bold 12px/1.5 arial, sans-serif;
 }
 .m-detail .info{
-　　　font:normal 14px/1.5 arial,sans-serif;
+　　　font: normal 14px/1.5 arial, sans-serif;
 }
 ```
 
@@ -756,11 +816,11 @@ body{
 
 ```
 .m-detail{
-　　　font:blod 12px/1.5 arial,sans-serif;
+　　　font: bold 12px/1.5 arial, sans-serif;
 }
 .m-detail .info{
-　　　font-weight:normal;
-　　　font-size:14px;
+　　　font-weight: normal;
+　　　font-size: 14px;
 }
 ```
 
@@ -772,9 +832,9 @@ body{
 
 ```
 .m-detail{
-　　　border-width:1px;
-　　　border-style:solid;
-　　　border-color:#000 #000 #f00;
+　　　border-width: 1px;
+　　　border-style: solid;
+　　　border-color: #000 #000 #f00;
 }
 ```
 
@@ -782,10 +842,37 @@ body{
 
 ```
 .m-detail{
-　　　border:1px solid #000;
-　　　border-bottom-color:#f00;
+　　　border: 1px solid #000;
+　　　border-bottom-color: #f00;
 }
 ```
+
+<a name="img"></a>
+## 图像约定
+
+<a name="img-compress"></a>
+### 1.图像压缩
+
+所有图片必须经过一定的压缩和优化才能发布
+
+<a name="background-image"></a>
+### 2.背景图
+
+* 使用PNG格式而不是GIF格式，因为PNG格式色彩更丰富，还能提供更好的压缩比
+* 在需要兼容IE6的项目中，尽可能选择PNG8，而不是使用PNG24+滤镜
+
+<a name="image"></a>
+### 3.前景图
+
+* 内容图片建议使用JPG，可以拥有更好地显示效果
+* 装饰性图片使用PNG
+
+<a name="sprite"></a>
+### 4.Sprite
+
+* CSS Sprite是一种将数个图片合成为一张大图的技术（既可以是背景图也可以是前景图），然后通过偏移来进行图像位置选取
+* CSS Sprite可以减少http请求
+
 
 <a name="end"></a>
 ## 结语
