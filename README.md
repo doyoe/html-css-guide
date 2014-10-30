@@ -68,10 +68,10 @@
 
 规范名称 | Cook
 --------|------|
-当前版本 | v0.0.1
+当前版本 | v1.0
 规范发起 | [杜瑶(@doyoe)](http://weibo.com/doyoe)
 参与人群 | Qunar FED
-最后更新 | 2014.10.11
+最后更新 | 2014.10.30
 
 <a name="general"></a>
 ## 通用约定
@@ -485,7 +485,7 @@
 g-|全局通用样式命名，前缀g全称为global，一旦修改将影响全站样式|g-mod
 m-|模块命名方式|m-detail
 ui-|组件命名方式|ui-selector
-J-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全部定义权限|J-switch
+js-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全部定义权限|js-switch
 
 * 选择器必须是以某个前缀开头
 
@@ -505,7 +505,7 @@ J-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全�
 	
 > 所有的选择器必须是以 g-, m-, ui- 等有前缀的选择符开头的，意思就是说所有的规则都必须在某个相对的作用域下才生效，尽可能减少全局污染。
 
-J- 这种级别的className完全交由JSer自定义，但是命名的规则也可以保持跟重构一致，比如说不能使用拼音之类的
+js- 这种级别的className完全交由JSer自定义，但是命名的规则也可以保持跟重构一致，比如说不能使用拼音之类的
 
 <a name="reuse"></a>
 ### 6.复用与重写
@@ -719,7 +719,6 @@ J- 这种级别的className完全交由JSer自定义，但是命名的规则也�
 　　　color: #222\0;     /* For IE8 and later, Opera without Webkit */
 　　　color: #333\9\0;   /* For IE8 and later */
 　　　color: #444\0/;    /* For IE8 and later */
-　　　[;color: #555;];   /* For Webkit, IE7 and earlier */
 　　　*color: #666;      /* For IE7 and earlier */
 　　　_color: #777;      /* For IE6 and earlier */
 }
@@ -747,7 +746,6 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 
 ```
 <version>
-
 目前的常用IE版本为6.0及以上，推荐酌情忽略低版本，把精力花在为使用高级浏览器的用户提供更好的体验上，另从IE10开始已无此特性
 ```
 
