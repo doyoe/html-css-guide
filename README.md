@@ -131,12 +131,18 @@
 	.m-detail-bd{ sRules; }
 	.m-detail-ft{ sRules; }
 	
-> 那么该模块的文件名应该为：`m-detal.css`
+> 那么该模块的文件名应该为：`m-detail.css`
 
 * CSS页面文件，其文件名必须与HTML文件名一致；
 
 > 假定有一个HTML页面叫 `product.html`，那么其相对应的CSS页面文件名应该为：`product.css`
 
+> 假定现在有一个 `product.html`，里面有2个模块：
+
+	+<section class="m-list">
+	+<section class="m-info">
+
+那么开发人员能快速找到与该页面相关的3个直接CSS文件，包括：`product.css`, `m-list.css`, `m-info.css`
 
 <a name="indentation"></a>
 ### 4.缩进
