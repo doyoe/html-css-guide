@@ -304,7 +304,9 @@
 > 规则可参考：
 
 > HTML4/XHTML1.0 Strict: [嵌套规则](http://www.cs.tut.fi/~jkorpela/html/strict.html)。
+> 
 > HTML5: [嵌套规则](http://www.w3.org/TR/html5/)
+> 
 > 举个例子，在HTML5中，a元素同时属于 Flow content, Phrasing content, Interactive content, Palpable content 4个分类，那些子元素是 phrasing 元素的元素可以是 a 的父元素，a 允许的子元素是以它的父元素允许的子元素为准，但不能包含 interactive 元素。
 
 <a name="close-tag"></a>
@@ -348,13 +350,13 @@
 
 不推荐：
 
-	<label><input type="radio" name="color" value="0" />蓝色</label>
-	<label><input type="radio" name="color" value="1" />粉色</label>
+	<input type="radio" name="color" value="0" /><label>蓝色</label>
+	<input type="radio" name="color" value="1" /><label>粉色</label>
 
 推荐：
 
-	<label for="blue"><input type="radio" id="blue" name="color" value="0" />蓝色</label>
-	<label for="pink"><input type="radio" id="pink" name="color" value="1" />粉色</label>
+	<input type="radio" id="blue" name="color" value="0" /><label for="blue">蓝色</label>
+	<input type="radio" id="pink" name="color" value="1" /><label for="pink">粉色</label>
 
 > for属性能让点击label标签的时候，同时focus到对应的 input 和 textarea上，增加响应区域
 
