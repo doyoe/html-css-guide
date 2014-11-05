@@ -135,6 +135,9 @@
 
 * CSS页面文件，其文件名必须与HTML文件名一致；
 
+> 假定有一个HTML页面叫 `product.html`，那么其相对应的CSS页面文件名应该为：`product.css`
+
+
 <a name="indentation"></a>
 ### 4.缩进
 
