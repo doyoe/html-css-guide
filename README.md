@@ -7,6 +7,7 @@
 3. [通用约定](#general)
 	* [文档目录结构](#directory)
 	* [分离](#separate)
+	* [文件命名](#file-name)
 	* [缩进](#indentation)
 	* [编码](#encoding)
 	* [小写](#lowercase)
@@ -118,13 +119,29 @@
 
 > 将结构与表现、行为分离，保证它们之间的最小耦合，这对前期开发和后期维护都至关重要。
 
+<a name="file-name"></a>
+### 3.文件命名
+
+* CSS模块文件，其文件名必须与模块名一致；
+
+假定有这样一个模块：
+
+	.m-detail{ sRules; }
+	.m-detail-hd{ sRules; }
+	.m-detail-bd{ sRules; }
+	.m-detail-ft{ sRules; }
+	
+> 那么该模块的文件名应该为：`m-detal.css`
+
+* CSS页面文件，其文件名必须与HTML文件名一致；
+
 <a name="indentation"></a>
-### 3.缩进
+### 4.缩进
 
 使用tab（4个空格宽度）来进行缩进，可以在IDE里进行设置
 
 <a name="encoding"></a>
-### 4.编码
+### 5.编码
 
 * 以 UTF-8 无 BOM 编码作为文件格式；
 * 在HTML中文档中用 `<meta charset="utf-8" />` 来指定编码；
@@ -133,19 +150,19 @@
 > 在sass中，如果文档中出现中文，却未显示定义编码，将会编译出错，为了统一各种写法，且提前规避错误几率，统一要求每个CSS文档都需要定义编码
 
 <a name="lowercase"></a>
-### 5.小写
+### 6.小写
 
 * 所有的HTML标签必须小写；
 * 所有的HTML属性必须小写；
 * 所有的样式名及规则必须小写。
 
 <a name="comment"></a>
-### 6.注释
+### 7.注释
 
 尽可能的为你的代码写上注释。解释为什么要这样写，它是新鲜的方案还是解决了什么问题。
 
 <a name="todo"></a>
-### 7.待办事项
+### 8.待办事项
 
 用 TODO 标示待办事项和正在开发的条目
 
@@ -158,12 +175,12 @@
 	.g-imgtext{ sRules }
 
 <a name="end-line-space"></a>
-### 8.行尾空格
+### 9.行尾空格
 
 删除行尾空格，这些空格没有必要存在
 
 <a name="protocol-relative-url"></a>
-### 9.省略嵌入式资源协议头
+### 10.省略嵌入式资源协议头
 
 省略图像、媒体文件、样式表和脚本等URL协议头部声明 ( http: , https: )。如果不是这两个声明的URL则不省略。
 
@@ -196,7 +213,7 @@
 > 注：省略协议头在IE7-8下会有一点小问题，外部CSS文件（link和@import）会被下载两遍，所以该条目的约定看具体项目。
 
 <a name="validator"></a>
-### 10.代码有效性
+### 11.代码有效性
 
 * 使用 [W3C HTML Validator](http://validator.w3.org/) 来验证你的HTML代码有效性；
 * 使用 [W3C CSS Validator](http://jigsaw.w3.org/css-validator/) 来验证你的CSS代码有效性。
