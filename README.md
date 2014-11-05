@@ -547,34 +547,27 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 <a name="packaging"></a>
 ### 8.书写格式
 
-* 使用换行的写法；
+* 属性值之前保留一个空格；
+* 分号之后保留一个空格；
+* 逗号之后保留一个空格；
+* 单条规则不换行；
+* 两条及以上规则需换行；
+* 多组选择符之间需换行。
 
 不推荐：
 
-	body{margin:0;padding:0;}
+	main{display:inline-block;}
+	h1,h2,h3{margin:0;background-color:rgba(0,0,0,.5);}
 
 推荐：
 
-	.g-box{ sRules; }
-	.g-box-hd .xx{ sRules; }
-	.g-box-hd .xx .aa{ sRules; }
-
-* 属性和值之间保留一个空格；
-* 不要以缩进的方式来体现层级关系。
-
-不推荐：
-
-	.g-box{ sRules; }
-		.g-box-hd .xx{ sRules; }
-			.g-box-hd .xx .aa{ sRules; }
-
-推荐：
-
-	.g-box{ sRules; }
-	.g-box-hd .xx{ sRules; }
-	.g-box-hd .xx .aa{ sRules; }
-
-> 这些都是为了达到简易视觉封装和一致性，让肉眼可以迅速以开头选择器作为检索的流从而主观识别区块
+	main{ display: inline-block; }
+	h1,
+	h2,
+	h3{
+		margin: 0;
+		background-color: rgba(0, 0, 0, .5);
+	}
 
 <a name="semicolon"></a>
 ### 9.规则与分号
