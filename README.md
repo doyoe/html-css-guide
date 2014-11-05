@@ -274,8 +274,16 @@
 所有元素必须正确嵌套
 
 * 不允许交叉；
+
+不允许：
+
+	<span><dfn>交叉嵌套</span></dfn>
+
+应该：
+
+	<span><dfn>交叉嵌套</dfn></span>
+
 * 不允许inline元素包含block元素；
-* 不允许类似在ul下出现除了li外的其它子元素等等。
 
 不推荐：
 
@@ -283,11 +291,6 @@
 		<h1>这是一个块级h1元素</h1>
 		<p>这是一个块级p元素</p>
 	</span>
-	<ul>
-		<h3>xx列表</h3>
-		<li>asdasdsdasd</li>
-		<li>asdasdsdasd</li>
-	</ul>
 
 推荐：
 
@@ -295,6 +298,19 @@
 		<h1>这是一个块级h1元素</h1>
 		<p>这是一个块级p元素</p>
 	</div>
+
+* 不允许非法的子元素嵌套。
+
+不允许：
+
+	<ul>
+		<h3>xx列表</h3>
+		<li>asdasdsdasd</li>
+		<li>asdasdsdasd</li>
+	</ul>
+
+应该：
+
 	<div>
 		<h3>xx列表</h3>
 		<ul>
