@@ -510,7 +510,7 @@
 
 推荐：
 
-	nav, news, type, search
+	nav, aside, news, type, search
 
 <a name="abbr"></a>
 ### 4.命名-缩写规范
