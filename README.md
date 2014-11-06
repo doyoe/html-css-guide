@@ -69,10 +69,10 @@
 
 规范名称 | Cook
 --------|------|
-当前版本 | v1.0
+当前版本 | v1.0 beta
 规范发起 | [杜瑶(@doyoe)](http://weibo.com/doyoe)
 参与人群 | Qunar FED
-最后更新 | 2014.10.30
+最后更新 | 2014.11.6
 
 <a name="general"></a>
 ## 通用约定
@@ -156,7 +156,7 @@
 * 在HTML中文档中用 `<meta charset="utf-8" />` 来指定编码；
 * 为每个CSS文档显示的定义编码，在文档首行定义 `@charset "utf-8";`
 
-> 在sass中，如果文档中出现中文，却未显示定义编码，将会编译出错，为了统一各种写法，且提前规避错误几率，统一要求每个CSS文档都需要定义编码
+> 在 Sass 中，如果文档中出现中文，却未显示定义编码，将会编译出错，为了统一各种写法，且提前规避错误几率，统一要求每个CSS文档都需要定义编码
 
 <a name="lowercase"></a>
 ### 6.小写
@@ -460,7 +460,24 @@
 
 > 参阅：[HTML5 Elements](http://www.w3.org/TR/html5/) 
 
+### 12.模块化
 
+* 每个模块必须有一个模块名；
+* 每个模块的基本组成部分应该一致。
+
+代码如：
+
+	<section class="m-detail">
+		<header class="m-detail-hd">
+			<h1 class="title">模块标题</h1>
+		</header>
+		<div class="m-detail-bd">
+			<p class="info">一些实际内容</p>
+		</div>
+		<footer class="m-detail-ft">
+			<a href="#" class="more">更多</a>
+		</footer>		
+	</section>
 
 <a name="css"></a>
 ## CSS约定
