@@ -753,9 +753,9 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 ```
 .g-box{
 　　　-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
-　　　   -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
-　　　     -o-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
-　　　        box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+　　　-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+　　　-o-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+　　　box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
 }
 ```
 
@@ -774,8 +774,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 	/**
 	 * 模块: m-detail
-	 * author: joy.du
-	 * edit: 2013.12.19
+	 * 说人话（后续补充描述这个模块）
 	 */
 
 > 有特殊作用的规则一定要有注释说明
