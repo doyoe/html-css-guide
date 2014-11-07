@@ -28,13 +28,13 @@
 	* [按模块添加注释](#html-comment)
 	* [格式](#format)
 	* [语义化标签](#semantic)
+	* [模块化](#html-module)
 5. [CSS约定](#css)
 	* [文件引用](#link)
 	* [命名-组成元素](#element)
 	* [命名-词汇规范](#word)
 	* [命名-缩写规范](#abbr)
 	* [命名-前缀规范](#prefix)
-	* [复用与重写](#reuse)
 	* [id与class](#id)
 	* [书写格式](#packaging)
 	* [规则与分号](#semicolon)
@@ -47,6 +47,7 @@
 	* [hack规范](#hack)
 	* [避免类型选择器](#type-selector)
 	* [属性缩写与分拆](#override)
+	* [模块化](#css-module)
 6. [图像约定](#img)
 	* [图像压缩](#img-compress)
 	* [背景图](#background-image)
@@ -460,10 +461,13 @@
 
 > 参阅：[HTML5 Elements](http://www.w3.org/TR/html5/) 
 
+<a name="html-module"></a>
 ### 12.模块化
 
 * 每个模块必须有一个模块名；
-* 每个模块的基本组成部分应该一致。
+* 每个模块的基本组成部分应该一致；
+* 模块的子节点类名需带上模块名（防止模块间嵌套时产生不必要的覆盖）；
+* 孙辈节点无需再带模块名。
 
 代码如：
 
@@ -478,6 +482,8 @@
 			<a href="#" class="more">更多</a>
 		</footer>		
 	</section>
+
+> 其中 `.m-detail-hd`, `.m-detail-bd`, `.m-detail-ft` 为可选，试具体模块情况决定是否需要抽象为这种 **头，中，尾** 的结构
 
 <a name="css"></a>
 ## CSS约定
@@ -577,18 +583,13 @@ js-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全
 
 js- 这种级别的className完全交由JSer自定义，但是命名的规则也可以保持跟重构一致，比如说不能使用拼音之类的
 
-<a name="reuse"></a>
-### 6.复用与重写
-
-参见模块化设计
-
 <a name="id"></a>
-### 7.id与class
+### 6.id与class
 
 重构工程师只允许使用class（因历史原因及大家的习惯做出妥协）。
 
 <a name="packaging"></a>
-### 8.书写格式
+### 7.书写格式
 
 * 选择器与大括号之间不需要空格；
 * 属性值之前保留一个空格；
@@ -614,7 +615,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	}
 
 <a name="semicolon"></a>
-### 9.规则与分号
+### 8.规则与分号
 
 每条规则结束后都必须加上分号
 
@@ -635,7 +636,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	}
 
 <a name="unit"></a>
-### 10.0与单位
+### 9.0与单位
 
 如果属性值为0，则不需要为0加单位
 
@@ -654,7 +655,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	}
 
 <a name="decimal"></a>
-### 11.0与小数
+### 10.0与小数
 
 如果是0开始的小数，前面的0可以省略不写
 
@@ -673,7 +674,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	}
 
 <a name="non-quotes"></a>
-### 12.去掉uri中引用资源的引号
+### 11.去掉uri中引用资源的引号
 
 不要在url()里对引用资源加引号
 
@@ -688,7 +689,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	@import url(global.css);
 
 <a name="hex"></a>
-### 13.HEX颜色值写法
+### 12.HEX颜色值写法
 
 * 将所有的颜色值小写；
 * 可以缩写的缩写至3位。
@@ -702,7 +703,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	body{ background-color: #f00; }
 
 <a name="order"></a>
-### 14.属性书写顺序
+### 13.属性书写顺序
 
 * 遵循先布局后内容的顺序。
 
@@ -762,7 +763,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 > 当有一天你的浏览器升级后，可能不再支持私有写法，那么这时写在后面的标准写法将生效，避免无法向后兼容的情况发生。
 
 <a name="css-comment"></a>
-### 15.注释规范
+### 14.注释规范
 
 保持注释内容与星号之间有一个空格的距离
 
@@ -782,7 +783,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 > 应用了高级技巧的地方一定要注释说明
 
 <a name="hack"></a>
-### 16.hack规范
+### 15.hack规范
 
 * 尽可能的减少对Hack的使用和依赖，如果在项目中对Hack的使用太多太复杂，对项目的维护将是一个巨大的挑战；
 * 使用其它的解决方案代替Hack思路；
@@ -826,7 +827,7 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 ```
 
 <a name="type-selector"></a>
-### 17.避免类型选择器
+### 16.避免类型选择器
 
 * 避免出现标签名与ID或class组合的选择器
 * 太多这种写法会让你的CSS效率变得糟糕
@@ -842,7 +843,7 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 	.first{ sRules; }
 
 <a name="override"></a>
-### 18.属性缩写与分拆
+### 17.属性缩写与分拆
 
 * 无继承关系时，使用缩写；
 * 存在继承关系时，使用分拆方式；
@@ -916,6 +917,58 @@ body{
 　　　border-bottom-color: #f00;
 }
 ```
+
+<a name="css-module"></a>
+### 18.模块化
+
+* 每个模块必须是一个独立的样式文件，文件名与模块名一致；
+* 模块样式的选择器必须以模块名开头以作范围约定；
+
+假定有一个模块如前文 [HTML模块化](#html-module)，那么 `m-detail.scss` 的写法大致如下：
+
+	.m-detail{
+		background: #fff;
+		color: #333;
+		@at-root{
+			&-hd{
+				padding: 5px 10px;
+				background: #eee;
+				.title{background: #eee;}
+			}
+			&-bd{
+				padding: 10px;
+				.info{
+					font-size: 14px;
+					text-indent: 2em;
+				}
+			}
+			&-ft{
+				text-align: center;
+				.more{color: blue;}
+			}
+		}
+	}
+	
+编译之后代码如下：
+
+	.m-detail{
+		background: #fff;
+		color: #333;
+	}
+	.m-detail-hd{
+    	padding: 5px 10px;
+    	background: #eee;
+    }
+    .m-detail-hd .title{ background: #eee; }
+	.m-detail-bd{ padding: 10px; }
+    .m-detail-bd .info{
+		font-size: 14px;
+		text-indent: 2em;
+	}
+	.m-detail-ft{ text-align: center; }
+    .m-detail-ft .more{ color: blue; }
+
+> 任何超过3级的选择器，需要思考是否必要，是否有无歧义的，能唯一命中的更简短的写法
 
 <a name="img"></a>
 ## 图像约定
