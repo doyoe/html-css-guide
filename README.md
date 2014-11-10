@@ -287,11 +287,11 @@
 
 所有的标签属性值必须要用双引号包裹，同时也不允许有的用双引号，有的用单引号的情况
 
-不推荐：
+不允许：
 
 	<a href=http://www.qunar.com class=home>去哪儿网</a>
 
-推荐：
+应该：
 
 	<a href="http://www.qunar.com" class="home">去哪儿网</a>
 
