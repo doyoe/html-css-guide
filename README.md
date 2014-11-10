@@ -253,12 +253,12 @@
 
 在调用CSS和JavaScript时，可以将type属性省略不写
 
-不推荐：
+不允许：
 
 	<link type="text/css" rel="stylesheet" href="base.css" />
 	<script type="text/javascript" src="base.js"></script>
 
-推荐：
+应该：
 
 	<link rel="stylesheet" href="base.css" />
 	<script src="base.js"></script>
@@ -270,12 +270,12 @@
 
 非必须属性值可以省略
 
-不推荐：
+不允许：
 
 	<input type="text" readonly="readonly" />
 	<input type="text" disabled="disabled" />
 
-推荐：
+应该：
 
 	<input type="text" readonly />
 	<input type="text" disabled />
@@ -312,14 +312,14 @@
 
 * 不允许inline元素包含block元素；
 
-不推荐：
+不允许：
 
 	<span>
 		<h1>这是一个块级h1元素</h1>
 		<p>这是一个块级p元素</p>
 	</span>
 
-推荐：
+应该：
 
 	<div>
 		<h1>这是一个块级h1元素</h1>
@@ -359,12 +359,12 @@
 
 所有标签必须闭合
 
-不推荐：
+不允许：
 
 	<div>balabala...
 	<link rel="stylesheet" href="*.css">
 
-推荐：
+应该：
 
 	<div>balabala...</div>
 	<link rel="stylesheet" href="*.css" />
@@ -393,12 +393,12 @@
 
 为表单元素label加上for属性
 
-不推荐：
+不允许：
 
 	<input type="radio" name="color" value="0" /><label>蓝色</label>
 	<input type="radio" name="color" value="1" /><label>粉色</label>
 
-推荐：
+应该：
 
 	<input type="radio" id="blue" name="color" value="0" /><label for="blue">蓝色</label>
 	<input type="radio" id="pink" name="color" value="1" /><label for="pink">粉色</label>
@@ -449,11 +449,11 @@
 * 禁止使用被废弃的用于表现的标签，如 center, font 等；
 * 部分在XHTML1中被废弃的标签，在HTML5中被重新赋予了新的语义，在选用时请先弄清其语义，如:b, i, u等。
 
-不推荐：
+不允许：
 
 	<p>标题</p>
 
-推荐：
+应该：
 
 	<h1>标题</h1>
 	
@@ -968,6 +968,7 @@ body{
 
 > 任何超过3级的选择器，需要思考是否必要，是否有无歧义的，能唯一命中的更简短的写法
 
+
 <a name="img"></a>
 ## 图像约定
 
@@ -1001,9 +1002,3 @@ body{
 坚持一致性的原则。
 一个团队的代码风格如果统一了，首先可以培养良好的协同和编码习惯，其次可以减少无谓的思考，再次可以提升代码质量和可维护性。
 统一的代码风格，团队内部阅读或编辑代码，将会变得非常轻松，因为组员都用一致思维环境。
-
-待修改完善。。。
-
-TODO:
-* 文件命名规范
-* 
