@@ -802,9 +802,10 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 * 严谨且长期的项目，针对IE可以使用条件注释作为预留Hack或者在当前使用
 
 IE条件注释语法：
-<!--[if <keywords>? IE <version>?]>
-<link rel=”stylesheet” href=”*.css” />
-<![endif]-->
+
+	<!--[if <keywords>? IE <version>?]>
+	<link rel=”stylesheet” href=”*.css” />
+	<![endif]-->
 
 语法说明：
 
