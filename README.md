@@ -881,6 +881,16 @@ body{
 }
 ```
 
+要避免错误的覆盖：
+
+```
+.m-detail .info{
+　　　font: 14px sans;
+}
+```
+
+> 如果你只是想改字号和字体，然后写成了上面这样，这是错误的写法，因为 `font` 复合属性里的其他属性将会被重置为 user agent 的默认值，比如 `font-weight` 就会被重置为 `normal`。
+
 推荐：
 
 ```
@@ -931,7 +941,9 @@ body{
 			&-hd{
 				padding: 5px 10px;
 				background: #eee;
-				.title{background: #eee;}
+				.title{
+					background: #eee;
+				}
 			}
 			&-bd{
 				padding: 10px;
@@ -942,7 +954,9 @@ body{
 			}
 			&-ft{
 				text-align: center;
-				.more{color: blue;}
+				.more{
+					color: blue;
+				}
 			}
 		}
 	}
@@ -957,14 +971,22 @@ body{
     	padding: 5px 10px;
     	background: #eee;
     }
-    .m-detail-hd .title{ background: #eee; }
-	.m-detail-bd{ padding: 10px; }
+    .m-detail-hd .title{
+    	background: #eee;
+    	}
+	.m-detail-bd{
+		padding: 10px;
+	}
     .m-detail-bd .info{
 		font-size: 14px;
 		text-indent: 2em;
 	}
-	.m-detail-ft{ text-align: center; }
-    .m-detail-ft .more{ color: blue; }
+	.m-detail-ft{
+		text-align: center;
+	}
+    .m-detail-ft .more{
+    	color: blue;
+    }
 
 > 任何超过3级的选择器，需要思考是否必要，是否有无歧义的，能唯一命中的更简短的写法
 
