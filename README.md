@@ -804,7 +804,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 IE条件注释语法：
 
 	<!--[if <keywords>? IE <version>?]>
-	<link rel=”stylesheet” href=”*.css” />
+	<link rel="stylesheet" href="*.css" />
 	<![endif]-->
 
 语法说明：
