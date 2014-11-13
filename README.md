@@ -45,7 +45,7 @@
 	* [属性书写顺序](#order)
 	* [注释规范](#css-comment)
 	* [hack规范](#hack)
-	* [避免类型选择器](#type-selector)
+	* [避免低效率选择器](#low-selector)
 	* [属性缩写与分拆](#override)
 	* [模块化](#css-module)
 6. [图像约定](#img)
@@ -824,21 +824,32 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 目前的常用IE版本为6.0及以上，推荐酌情忽略低版本，把精力花在为使用高级浏览器的用户提供更好的体验上，另从IE10开始已无此特性
 ```
 
-<a name="type-selector"></a>
-### 16.避免类型选择器
+<a name="low-selector"></a>
+### 16.避免低效率选择器
 
-* 避免出现标签名与ID或class组合的选择器
-* 太多这种写法会让你的CSS效率变得糟糕
+* 避免类型选择器
 
-不推荐：
+不允许：
 
 	div#doc{ sRules; }
 	li.first{ sRules; }
 
-推荐：
+应该：
 
 	#doc{ sRules; }
 	.first{ sRules; }
+	
+> CSS选择器是由右到左进行解析的，所以 div#doc 本身并不会比 #doc 更快
+
+* 避免多id选择器
+
+不允许：
+
+	#xxx #yyy{ sRules; }
+
+应该：
+	
+	#yyy{ sRules; }
 
 <a name="override"></a>
 ### 17.属性缩写与分拆
@@ -973,7 +984,7 @@ body{
     }
     .m-detail-hd .title{
     	background: #eee;
-    	}
+    }
 	.m-detail-bd{
 		padding: 10px;
 	}
