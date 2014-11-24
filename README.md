@@ -774,7 +774,8 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 	/**
 	 * 模块: m-detail
-	 * 说人话（后续补充描述这个模块）
+	 * 描述：酒店详情模块
+	 * 应用：page detail, info and etc...etc
 	 */
 
 > 有特殊作用的规则一定要有注释说明
