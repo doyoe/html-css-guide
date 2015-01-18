@@ -128,7 +128,7 @@
 
 > 至于 `html`, `bgimg`, `image`, `font` 这几个目录为什么没有加 `s`，主要是因为不希望大家去想某个目录是否为复数，简单点就好。
 
-> `prd` 为生产环境目录，以 `xxx`项目为例，其生产环境中的某个CSS外链大致如下：`//sitename.com/styles/mobile/index.css`
+> `prd` 为生产环境目录，以 `xxx`项目为例，其生产环境中的某个CSS外链大致如下：`//sitename.com/prd/styles/mobile/index.css`
 
 <a name="separate"></a>
 ### 2.分离
