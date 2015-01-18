@@ -73,7 +73,7 @@
 当前版本 | v1.0 beta
 规范发起 | [杜瑶(@doyoe)](http://weibo.com/doyoe)
 参与人群 | Qunar FED
-最后更新 | 2014.11.6
+最后更新 | 2015.01.18
 
 <a name="general"></a>
 ## 通用约定
