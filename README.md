@@ -615,7 +615,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 	}
 	h1,
 	h2,
-	h3{
+	h3 {
 		margin: 0;
 		background-color: rgba(0, 0, 0, .5);
 	}
