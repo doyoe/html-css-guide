@@ -97,28 +97,27 @@
 				|-- layout    布局
 				|-- widget    组件
 			|-- usage  项目具体实现
-				|-- project
+				|-- project 某个子项目
 					|-- core      核心代码：桥接lib中的core，可以进行项目级扩展
 					|-- fragment  项目公用碎片
 					|-- module    模块
 					|-- page      page桥接文件目录：src-list
 					|-- export    page pack之后的文件目录
-	|-- src	生产环境
+	|-- prd	生产环境
 		|-- bgimg   背景图目录（假设有的话）
 		|-- image   前景图目录（假设有的话）
 		|-- font    字体目录（假设有的话）
 		|-- scripts      脚本目录
 		|-- styles（Yo）  样式目录
-			|-- usage  项目具体实现
-				|-- mobile
-					|-- index.css
-					|-- login.css
-					|-- and etc...
-				|-- pad
-					|-- index.css
-					|-- login.css
-					|-- and etc...
+			|-- project1 子项目
+				|-- index.css
+				|-- login.css
 				|-- and etc...
+			|-- project2 子项目
+				|-- index.css
+				|-- login.css
+				|-- and etc...
+			|-- and etc...
 ```
 
 > `src`, `scripts`, `styles` 三个目录是为了和现有项目保持一致，避免修改过大，所以保持不变。
@@ -129,6 +128,7 @@
 
 > 至于 `html`, `bgimg`, `image`, `font` 这几个目录为什么没有加 `s`，主要是因为不希望大家去想某个目录是否为复数，简单点就好。
 
+> `prd` 为生产环境目录，以 `xxx`项目为例，其生产环境中的某个CSS外链大致如下：`//sitename.com/styles/mobile/index.css`
 
 <a name="separate"></a>
 ### 2.分离
