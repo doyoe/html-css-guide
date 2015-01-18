@@ -84,6 +84,10 @@
 ```
 |-- 项目名
 	|-- src	
+		|-- html    静态页面模板目录
+		|-- bgimg   背景图目录（假设有的话）
+		|-- image   前景图目录（假设有的话）
+		|-- font    字体目录（假设有的话）
 		|-- scripts      脚本目录
 		|-- styles（Yo）  样式目录
 			|-- lib   基础库
@@ -93,15 +97,12 @@
 				|-- layout    布局
 				|-- widget    组件
 			|-- usage  项目具体实现
-				|-- core      核心代码：桥接lib中的core，可以进行项目级扩展
-				|-- fragment  项目公用碎片
-				|-- module    模块
-				|-- page      page桥接文件：src-list
-				|-- export    page pack之后的文件
-		|-- html    静态页面模板目录
-		|-- bgimg   背景图目录（假设有的话）
-		|-- image   前景图目录（假设有的话）
-		|-- font    字体目录（假设有的话）
+				|-- project
+					|-- core      核心代码：桥接lib中的core，可以进行项目级扩展
+					|-- fragment  项目公用碎片
+					|-- module    模块
+					|-- page      page桥接文件：src-list
+					|-- export    page pack之后的文件
 ```
 
 > `src`, `scripts`, `styles` 三个目录是为了和现有项目保持一致，避免修改过大，所以保持不变。
@@ -127,10 +128,10 @@
 
 假定有这样一个模块：
 
-	.m-detail{ sRules; }
-	.m-detail-hd{ sRules; }
-	.m-detail-bd{ sRules; }
-	.m-detail-ft{ sRules; }
+	.m-detail { sRules; }
+	.m-detail-hd { sRules; }
+	.m-detail-bd { sRules; }
+	.m-detail-ft { sRules; }
 	
 > 那么该模块的文件名应该为：`m-detail.css`
 
@@ -182,7 +183,7 @@
 	...
 
 	/* TODO: 图文混排 comm: g-imgtext */
-	.g-imgtext{ sRules }
+	.g-imgtext { sRules; }
 
 <a name="end-line-space"></a>
 ### 9.行尾空格
@@ -310,22 +311,6 @@
 
 	<span><dfn>交叉嵌套</dfn></span>
 
-* 不允许inline元素包含block元素；
-
-不允许：
-
-	<span>
-		<h1>这是一个块级h1元素</h1>
-		<p>这是一个块级p元素</p>
-	</span>
-
-应该：
-
-	<div>
-		<h1>这是一个块级h1元素</h1>
-		<p>这是一个块级p元素</p>
-	</div>
-
 * 不允许非法的子元素嵌套。
 
 不允许：
@@ -344,6 +329,22 @@
 			<li>asdasdsdasd</li>
 			<li>asdasdsdasd</li>
 		</ul>
+	</div>
+
+* 不推荐inline元素包含block元素；
+
+不推荐：
+
+	<span>
+		<h1>这是一个块级h1元素</h1>
+		<p>这是一个块级p元素</p>
+	</span>
+
+推荐：
+
+	<div>
+		<h1>这是一个块级h1元素</h1>
+		<p>这是一个块级p元素</p>
 	</div>
 
 > 规则可参考：
@@ -421,7 +422,7 @@
 	<!-- /排行榜模块 -->
 
 > 注释内容左右两边保留和注释符号有1个空格位，在注释内容内不允许再出现中划线“-”，某些浏览器会报错。
-> 
+>
 > 注释风格保持与原生HTML的语法相似：成对出现 `<!-- comment --><!-- /comment -->`
 
 <a name="format"></a>
@@ -506,15 +507,15 @@
 
 不推荐：
 
-	.xiangqing{}
-	.news_list{}
-	.zhuti{}
+	.xiangqing { sRules; }
+	.news_list { sRules; }
+	.zhuti { sRules; }
 
 推荐：
 
-	.detail{}
-	.news-list{}
-	.topic{}
+	.detail { sRules; }
+	.news-list { sRules; }
+	.topic { sRules; }
 
 > ①我们使用中划线 “-” 作为连接字符，而不是下划线 "_"。
 > 
@@ -567,17 +568,17 @@ js-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全
 
 不推荐：
 
-	.info{}
-	.current{}
-	.news{}
+	.info { sRules; }
+	.current { sRules; }
+	.news { sRules; }
 	
 > 因为这样将给我们带来不可预知的管理麻烦以及沉重的历史包袱。你永远也不会知道哪些样式名已经被用掉了，如果你是一个新人，你可能会遭遇，你每定义个样式名，都有同名的样式已存在，然后你只能是换样式名或者覆盖规则。
 
 推荐：
 
-	.m-detail .info{}
-	.m-detail .current{}
-	.m-detail .news{}
+	.m-detail .info { sRules; }
+	.m-detail .current { sRules; }
+	.m-detail .news { sRules; }
 	
 > 所有的选择器必须是以 g-, m-, ui- 等有前缀的选择符开头的，意思就是说所有的规则都必须在某个相对的作用域下才生效，尽可能减少全局污染。
 
@@ -591,8 +592,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 <a name="packaging"></a>
 ### 7.书写格式
 
-* 选择器与大括号之间不需要空格；
-* 属性值之前保留一个空格；
+* 选择器与大括号之间保留一个空格；
 * 分号之后保留一个空格；
 * 逗号之后保留一个空格；
 * 所有规则需换行；
@@ -600,12 +600,19 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 不推荐：
 
-	main{display:inline-block;}
-	h1,h2,h3{margin:0;background-color:rgba(0,0,0,.5);}
+	main{
+		display:inline-block;
+	}
+	h1,h2,h3{
+		margin:0;
+		background-color:rgba(0,0,0,.5);
+	}
 
 推荐：
 
-	main{ display: inline-block; }
+	main {
+		display: inline-block;
+	}
 	h1,
 	h2,
 	h3{
@@ -620,7 +627,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 不推荐：
 
-	body{
+	body {
 		margin: 0;
 		padding: 0;
 		font-size: 14px
@@ -628,7 +635,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 推荐：
 
-	body{
+	body {
 		margin: 0;
 		padding: 0;
 		font-size: 14px;
@@ -641,14 +648,14 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 不推荐：
 
-	body{
+	body {
 		margin: 0px;
 		padding: 0px;
 	}
 
 推荐：
 
-	body{
+	body {
 		margin: 0;
 		padding: 0;
 	}
@@ -660,14 +667,14 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 不推荐：
 
-	body{
+	body {
 		opacity: 0.6;
 		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 	}
 
 推荐：
 
-	body{
+	body {
 		opacity: .6;
 		text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
 	}
@@ -679,12 +686,16 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 不推荐：
 
-	body{ background-image: url("sprites.png"); }
+	body {
+		background-image: url("sprites.png");
+	}
 	@import url("global.css");
 
 推荐：
 
-	body{ background-image: url(sprites.png); }
+	body {
+		background-image: url(sprites.png);
+	}
 	@import url(global.css);
 
 <a name="hex"></a>
@@ -695,11 +706,15 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 不推荐：
 
-	body{ background-color: #FF0000; }
+	body {
+		background-color: #FF0000;
+	}
 
 推荐：
 
-	body{ background-color: #f00; }
+	body {
+		background-color: #f00;
+	}
 
 <a name="order"></a>
 ### 13.属性书写顺序
@@ -707,7 +722,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 * 遵循先布局后内容的顺序。
 
 ```
-.g-box{
+.g-box {
 　　　display: block;
 　　　float: left;
 　　　width: 500px;
@@ -728,7 +743,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 拿上例的代码来说，如果我们还需要进行定位及堆叠，规则我们可以改成如下： 
 
 ```
-.g-box{
+.g-box {
 　　　display: block;
 　　　position: relative;
 　　　z-index: 2;
@@ -751,7 +766,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 * 私有属性在前标准属性在后
 
 ```
-.g-box{
+.g-box {
 　　　-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
 　　　-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
 　　　-o-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
@@ -789,7 +804,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 * 如果非Hack不可，选择稳定且常用并易于理解的。
 
 ```
-.test{
+.test {
 　　　color: #000;       /* For all */
 　　　color: #111\9;     /* For all IE */
 　　　color: #222\0;     /* For IE8 and later, Opera without Webkit */
@@ -833,13 +848,13 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 
 不允许：
 
-	div#doc{ sRules; }
-	li.first{ sRules; }
+	div#doc { sRules; }
+	li.first { sRules; }
 
 应该：
 
-	#doc{ sRules; }
-	.first{ sRules; }
+	#doc { sRules; }
+	.first { sRules; }
 	
 > CSS选择器是由右到左进行解析的，所以 div#doc 本身并不会比 #doc 更快
 
@@ -847,11 +862,11 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 
 不允许：
 
-	#xxx #yyy{ sRules; }
+	#xxx #yyy { sRules; }
 
 应该：
 	
-	#yyy{ sRules; }
+	#yyy { sRules; }
 
 <a name="override"></a>
 ### 17.属性缩写与分拆
@@ -861,7 +876,7 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 不推荐：
 
 ```
-body{
+body {
 　　　margin-top: 10px;
 　　　margin-right: 10px;
 　　　margin-bottom: 10px;
@@ -872,7 +887,7 @@ body{
 推荐：
 
 ```
-body{
+body {
 　　　margin: 10px;
 }
 ```
@@ -882,10 +897,10 @@ body{
 不推荐：
 
 ```
-.m-detail{
+.m-detail {
 　　　font: bold 12px/1.5 arial, sans-serif;
 }
-.m-detail .info{
+.m-detail .info {
 　　　font: normal 14px/1.5 arial, sans-serif;
 }
 ```
@@ -893,7 +908,7 @@ body{
 要避免错误的覆盖：
 
 ```
-.m-detail .info{
+.m-detail .info {
 　　　font: 14px sans;
 }
 ```
@@ -903,10 +918,10 @@ body{
 推荐：
 
 ```
-.m-detail{
+.m-detail {
 　　　font: bold 12px/1.5 arial, sans-serif;
 }
-.m-detail .info{
+.m-detail .info {
 　　　font-weight: normal;
 　　　font-size: 14px;
 }
@@ -919,7 +934,7 @@ body{
 不推荐：
 
 ```
-.m-detail{
+.m-detail {
 　　　border-width: 1px;
 　　　border-style: solid;
 　　　border-color: #000 #000 #f00;
@@ -929,7 +944,7 @@ body{
 推荐：
 
 ```
-.m-detail{
+.m-detail {
 　　　border: 1px solid #000;
 　　　border-bottom-color: #f00;
 }
@@ -943,27 +958,27 @@ body{
 
 假定有一个模块如前文 [HTML模块化](#html-module)，那么 `m-detail.scss` 的写法大致如下：
 
-	.m-detail{
+	.m-detail {
 		background: #fff;
 		color: #333;
-		@at-root{
-			&-hd{
+		@at-root {
+			&-hd {
 				padding: 5px 10px;
 				background: #eee;
-				.title{
+				.title {
 					background: #eee;
 				}
 			}
-			&-bd{
+			&-bd {
 				padding: 10px;
-				.info{
+				.info {
 					font-size: 14px;
 					text-indent: 2em;
 				}
 			}
-			&-ft{
+			&-ft {
 				text-align: center;
-				.more{
+				.more {
 					color: blue;
 				}
 			}
@@ -972,28 +987,28 @@ body{
 	
 编译之后代码如下：
 
-	.m-detail{
+	.m-detail {
 		background: #fff;
 		color: #333;
 	}
-	.m-detail-hd{
+	.m-detail-hd {
     	padding: 5px 10px;
     	background: #eee;
     }
-    .m-detail-hd .title{
+    .m-detail-hd .title {
     	background: #eee;
     }
-	.m-detail-bd{
+	.m-detail-bd {
 		padding: 10px;
 	}
-    .m-detail-bd .info{
+    .m-detail-bd .info {
 		font-size: 14px;
 		text-indent: 2em;
 	}
-	.m-detail-ft{
+	.m-detail-ft {
 		text-align: center;
 	}
-    .m-detail-ft .more{
+    .m-detail-ft .more {
     	color: blue;
     }
 
