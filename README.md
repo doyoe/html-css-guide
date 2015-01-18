@@ -83,7 +83,7 @@
 
 ```
 |-- 项目名
-	|-- src	
+	|-- src	开发环境
 		|-- html    静态页面模板目录
 		|-- bgimg   背景图目录（假设有的话）
 		|-- image   前景图目录（假设有的话）
@@ -101,8 +101,24 @@
 					|-- core      核心代码：桥接lib中的core，可以进行项目级扩展
 					|-- fragment  项目公用碎片
 					|-- module    模块
-					|-- page      page桥接文件：src-list
-					|-- export    page pack之后的文件
+					|-- page      page桥接文件目录：src-list
+					|-- export    page pack之后的文件目录
+	|-- src	生产环境
+		|-- bgimg   背景图目录（假设有的话）
+		|-- image   前景图目录（假设有的话）
+		|-- font    字体目录（假设有的话）
+		|-- scripts      脚本目录
+		|-- styles（Yo）  样式目录
+			|-- usage  项目具体实现
+				|-- mobile
+					|-- index.css
+					|-- login.css
+					|-- and etc...
+				|-- pad
+					|-- index.css
+					|-- login.css
+					|-- and etc...
+				|-- and etc...
 ```
 
 > `src`, `scripts`, `styles` 三个目录是为了和现有项目保持一致，避免修改过大，所以保持不变。
