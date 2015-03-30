@@ -91,7 +91,7 @@
 		|-- scripts      脚本目录
 		|-- styles（Yo）  样式目录
 			|-- lib   基础库
-				|-- core      核心代码：reset 
+				|-- core      核心代码：reset
 				|-- element   元素
 				|-- fragment  公用碎片
 				|-- layout    布局
@@ -148,7 +148,7 @@
 	.m-detail-hd { sRules; }
 	.m-detail-bd { sRules; }
 	.m-detail-ft { sRules; }
-	
+
 > 那么该模块的文件名应该为：`m-detail.css`
 
 * CSS页面文件，其文件名必须与HTML文件名一致；
@@ -220,7 +220,7 @@
 推荐：
 
 	<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
-	
+
 不推荐：
 
 ```
@@ -366,9 +366,9 @@
 > 规则可参考：
 
 > HTML4/XHTML1.0 Strict: [嵌套规则](http://www.cs.tut.fi/~jkorpela/html/strict.html)。
-> 
+>
 > HTML5: [嵌套规则](http://www.w3.org/TR/html5/)
-> 
+>
 > 举个例子，在HTML5中，a元素同时属于 Flow content, Phrasing content, Interactive content, Palpable content 4个分类，那些子元素是 phrasing 元素的元素可以是 a 的父元素，a 允许的子元素是以它的父元素允许的子元素为准，但不能包含 interactive 元素。
 
 <a name="close-tag"></a>
@@ -473,10 +473,10 @@
 应该：
 
 	<h1>标题</h1>
-	
+
 > 虽然使用p标签，也可以通过CSS去定义它的外观和标题相同，但p标签本身的并不是表示标题，而是表示文本段落
 
-> 参阅：[HTML5 Elements](http://www.w3.org/TR/html5/) 
+> 参阅：[HTML5 Elements](http://www.w3.org/TR/html5/)
 
 <a name="html-module"></a>
 ### 12.模块化
@@ -497,7 +497,7 @@
 		</div>
 		<footer class="m-detail-ft">
 			<a href="#" class="more">更多</a>
-		</footer>		
+		</footer>
 	</section>
 
 > 其中 `.m-detail-hd`, `.m-detail-bd`, `.m-detail-ft` 为可选，视具体模块情况决定是否需要抽象为这种 **头，中，尾** 的结构
@@ -534,7 +534,7 @@
 	.topic { sRules; }
 
 > ①我们使用中划线 “-” 作为连接字符，而不是下划线 "_"。
-> 
+>
 > 我们知道2种方式都有不少支持者，但 "-" 能让你少按一次shift键，并且更符合CSS原生语法，所以我们只选一种目前业内普遍使用的方式
 
 <a name="word"></a>
@@ -560,13 +560,13 @@
 
 不推荐：
 
-	navigation   =>  navi	
+	navigation   =>  navi
 	header       =>  head
 	description  =>  des
 
 推荐：
 
-	navigation   =>  nav	
+	navigation   =>  nav
 	header       =>  hd
 	description  =>  desc
 
@@ -587,7 +587,7 @@ js-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全
 	.info { sRules; }
 	.current { sRules; }
 	.news { sRules; }
-	
+
 > 因为这样将给我们带来不可预知的管理麻烦以及沉重的历史包袱。你永远也不会知道哪些样式名已经被用掉了，如果你是一个新人，你可能会遭遇，你每定义个样式名，都有同名的样式已存在，然后你只能是换样式名或者覆盖规则。
 
 推荐：
@@ -595,7 +595,7 @@ js-|所有用于纯交互的命名，不涉及任何样式规则。JSer拥有全
 	.m-detail .info { sRules; }
 	.m-detail .current { sRules; }
 	.m-detail .news { sRules; }
-	
+
 > 所有的选择器必须是以 g-, m-, ui- 等有前缀的选择符开头的，意思就是说所有的规则都必须在某个相对的作用域下才生效，尽可能减少全局污染。
 
 js- 这种级别的className完全交由JSer自定义，但是命名的规则也可以保持跟重构一致，比如说不能使用拼音之类的
@@ -756,7 +756,7 @@ js- 这种级别的className完全交由JSer自定义，但是命名的规则也
 
 * 组概念。
 
-拿上例的代码来说，如果我们还需要进行定位及堆叠，规则我们可以改成如下： 
+拿上例的代码来说，如果我们还需要进行定位及堆叠，规则我们可以改成如下：
 
 ```
 .g-box {
@@ -871,7 +871,7 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 
 	#doc { sRules; }
 	.first { sRules; }
-	
+
 > CSS选择器是由右到左进行解析的，所以 div#doc 本身并不会比 #doc 更快
 
 * 避免多id选择器
@@ -881,7 +881,7 @@ if条件共包含6种选择方式：是否、大于、大于或等于、小于�
 	#xxx #yyy { sRules; }
 
 应该：
-	
+
 	#yyy { sRules; }
 
 <a name="override"></a>
@@ -977,30 +977,28 @@ body {
 	.m-detail {
 		background: #fff;
 		color: #333;
-		@at-root {
-			&-hd {
-				padding: 5px 10px;
+		&-hd {
+			padding: 5px 10px;
+			background: #eee;
+			.title {
 				background: #eee;
-				.title {
-					background: #eee;
-				}
 			}
-			&-bd {
-				padding: 10px;
-				.info {
-					font-size: 14px;
-					text-indent: 2em;
-				}
+		}
+		&-bd {
+			padding: 10px;
+			.info {
+				font-size: 14px;
+				text-indent: 2em;
 			}
-			&-ft {
-				text-align: center;
-				.more {
-					color: blue;
-				}
+		}
+		&-ft {
+			text-align: center;
+			.more {
+				color: blue;
 			}
 		}
 	}
-	
+
 编译之后代码如下：
 
 	.m-detail {
@@ -1065,4 +1063,4 @@ body {
 
 一个团队的代码风格如果统一了，首先可以培养良好的协同和编码习惯，其次可以减少无谓的思考，再次可以提升代码质量和可维护性。
 
-统一的代码风格，团队内部阅读或编辑代码，将会变得非常轻松，因为所有组员都处在一致思维环境中。   
+统一的代码风格，团队内部阅读或编辑代码，将会变得非常轻松，因为所有组员都处在一致思维环境中。
